@@ -1,19 +1,20 @@
 #include <stdio.h>
-#include <ctype.h>
+#include <stdlib.h>
 /**
-* main - Program to print alphabet letter followed by new line
-*
-* Return: return 0
-*/
+ * main - main block
+ * Description: Get a random number and check its last digit, compare it with 5
+ * Return: 0
+ */
 int main(void)
 {
-	int letter;
-	
-	for (letter = 'a'; letter <= 'z'; letter++)
+	char c = 'a';
+
+	while (c <= 'z')
 	{
-		letter = tolower(letter);
-		putchar(letter);
+		putchar(c);
+		c++;
 	}
+
 	putchar('\n');
 	return (0);
 }
