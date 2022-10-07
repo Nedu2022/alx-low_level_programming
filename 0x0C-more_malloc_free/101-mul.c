@@ -1,6 +1,8 @@
+
+#include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include "main.h"
+
 int find_len(char *str);
 char *create_xarray(int size);
 char *iterate_zeroes(char *str);
@@ -57,7 +59,7 @@ char *create_xarray(int size)
  *
  * Return: A pointer to the next non-zero element.
  */
-char *iterate_zeroes(char *str)
+	char *iterate_zeroes(char *str)
 {
 	while (*str && *str == '0')
 		str++;
@@ -227,4 +229,5 @@ int main(int argc, char *argv[])
 	free(next_prod);
 	free(final_prod);
 
-	return (0);}
+	return (0);
+}
