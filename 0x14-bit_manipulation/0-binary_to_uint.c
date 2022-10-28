@@ -1,55 +1,37 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "main.h"
 
 /**
- * power - Calculates binary multiples
- * @n: Number to calculate with
- * @x: Unsigned int power
+ * binary_to_uint - converts a binary number to an
+ * unsigned int.
+ * @b: binary.
  *
- * Description: Calculates n by n, x times
- * Return: productsumor 1 if x is 0.
- */
-int power(int n, unsigned int x)
-{
-	if (x == 0)
-		return (1);
-
-	while (--x)
-		n *= 2;
-
-	return (n);
-}
-
-/**
- * binary_to_uint - converts binary to decimal
- * @b: Binary string pointer
- *
- * Description: Converts a binary string to pointer.
- * Return: the number or 0 if it fails.
+ * Return: unsigned int.
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int sum = 0, n = 0, i = 0, p, a;
+	unsigned int ui;
+	int len, base_two;
 
-	if (b == NULL)
+	if (!b)
 		return (0);
 
-	while (b[n])
+	ui = 0;
+
+	for (len = 0; b[len] != '\0'; len++)
+		;
+
+	for (len--, base_two = 1; len >= 0; len--, base_two *= 2)
 	{
-		if (b[n] < '0' || b[n] > '1')
+		if (b[len] != '0' && b[len] != '1')
+		{
 			return (0);
-		n++;
+		}
+
+		if (b[len] & 1)
+		{
+			ui += base_two;
+		}
 	}
 
-	while (n > 0)
-	{
-		n--;
-		p = power(2, i);
-		a = (b[n] == '0') ? 0 : 1;
-		sum += (a * p);
-		i++;
-	}
-
-	return (sum);
+	return (ui);
 }
